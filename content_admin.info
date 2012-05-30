@@ -1,0 +1,9 @@
+name = Content Admin
+description = Settings Content administration and other CA specific settings/functions
+core = 7.x
+package = Citisoft
+version = 7.x-1.0
+project = content_admin
+dependencies[] = features
+features[features_api][] = api:1
+features[user_role][] = Content Administrator
