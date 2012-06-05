@@ -1,9 +1,13 @@
 name = Content Admin
 description = Settings Content administration and other CA specific settings/functions
 core = 7.x
-package = Citisoft
+package = Knectar
+php = 5.2.4
 version = 7.x-1.0
 project = content_admin
 dependencies[] = features
+dependencies[] = path
 features[features_api][] = api:1
+features[user_permission][] = ca flush caches
+features[user_permission][] = create url aliases
 features[user_role][] = Content Administrator

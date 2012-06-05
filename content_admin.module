@@ -16,9 +16,10 @@ function content_admin_permission() {
 
 function content_admin_menu() {
   $items['admin/flush-cache'] = array(
+    'title' => 'Clear All Caches',
     'page callback' => 'content_admin_flush_caches',
     'access arguments' => array('ca flush caches'),
-    'type' => MENU_CALLBACK,
+    'type' => MENU_NORMAL_ITEM,
   );
   return $items;
 }
@@ -27,7 +28,8 @@ function content_admin_menu() {
  * Implements hook_flush_caches().
  */
 function content_admin_flush_caches() {
-  drupal_flush_all_caches();
-  drupal_set_message(t("All caches cleared")); 
+  $clear = cache_clear_all();
+  drupal_set_message(t('All Caches Cleared')); 
+  drupal_goto('<front>');
 }
 
