@@ -4,3 +4,30 @@
  */
 
 // Drupal needs this blank file.
+
+function content_admin_permission() {
+  return array(
+    'ca flush caches' => array(
+      'title' => t('Flush all caches'),
+      'description' => t('Access links to flush caches in the shortcuts menu'),
+    ),
+  );
+}
+
+function content_admin_menu() {
+  $items['admin/flush-cache'] = array(
+    'page callback' => 'content_admin_flush_caches',
+    'access arguments' => array('ca flush caches'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function content_admin_flush_caches() {
+  drupal_flush_all_caches();
+  drupal_set_message(t("All caches cleared")); 
+}
+
